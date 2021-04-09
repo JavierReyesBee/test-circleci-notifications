@@ -82,7 +82,7 @@ jobs:
       - run:
           name: Fail
           command: |
-            exit 0
+            exit 1
 
 workflows:
   version: 2
@@ -103,7 +103,7 @@ workflows:
                         "type": "section",
                         "text": {
                           "type": "mrkdwn",
-                          "text": ":white_check_mark: *Success* #${CIRCLE_BUILD_NUM} `${CIRCLE_PROJECT_REPONAME}` on `${CIRCLE_BRANCH}`"
+                          "text": ":white_check_mark: *Success* `${CIRCLE_PROJECT_REPONAME}` on `${CIRCLE_BRANCH}`"
                         }
                       },
                       {
