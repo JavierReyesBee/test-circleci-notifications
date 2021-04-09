@@ -42,7 +42,7 @@ slack-fail-post-step: &slack-fail-post-step
                     "type": "mrkdwn",
                     "text": "*PR*: $CIRCLE_PULL_REQUEST"
                   }
-                ],
+                ]
               },
               {
                 "type": "actions",
