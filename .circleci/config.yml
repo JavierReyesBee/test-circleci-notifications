@@ -103,7 +103,7 @@ workflows:
                         "type": "section",
                         "text": {
                           "type": "mrkdwn",
-                          "text": ":marca_de_verificación_blanca: *Success* #${CIRCLE_BUILD_NUM} `${CIRCLE_PROJECT_REPONAME}` on `${CIRCLE_BRANCH}`"
+                          "text": ":white_check_mark: *Success* #${CIRCLE_BUILD_NUM} `${CIRCLE_PROJECT_REPONAME}` on `${CIRCLE_BRANCH}`"
                         }
                       },
                       {
