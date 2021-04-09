@@ -121,5 +121,5 @@ workflows:
                       }
                     ]
                   }
-                event: always
+                event: pass
 
