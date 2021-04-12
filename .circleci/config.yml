@@ -83,6 +83,33 @@ jobs:
           name: Fail
           command: |
             exit 1
+      - slack/notify:
+          custom: |
+            {
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": ":white_check_mark: *Success* `${CIRCLE_PROJECT_REPONAME}` on `${CIRCLE_BRANCH}`"
+                  }
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "View Job"
+                      },
+                      "url": "${CIRCLE_BUILD_URL}"
+                    }
+                  ]
+                }
+              ]
+            }
+          event: pass
 
 workflows:
   version: 2
@@ -91,35 +118,7 @@ workflows:
       - build:
           <<: *slack-fail-post-step
       - last-job:
-          <<: *slack-fail-post-step
           requires:
             - build
-          post-steps:
-            - slack/notify:
-                custom: |
-                  {
-                    "blocks": [
-                      {
-                        "type": "section",
-                        "text": {
-                          "type": "mrkdwn",
-                          "text": ":white_check_mark: *Success* `${CIRCLE_PROJECT_REPONAME}` on `${CIRCLE_BRANCH}`"
-                        }
-                      },
-                      {
-                        "type": "actions",
-                        "elements": [
-                          {
-                            "type": "button",
-                            "text": {
-                              "type": "plain_text",
-                              "text": "View Job"
-                            },
-                            "url": "${CIRCLE_BUILD_URL}"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                event: pass
+          <<: *slack-fail-post-step
 
